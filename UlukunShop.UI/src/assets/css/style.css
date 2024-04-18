@@ -90,7 +90,7 @@ a {
       .custom-navbar .custom-navbar-cta {
         margin-left: 40px !important; } }
     .custom-navbar .custom-navbar-cta li {
-      margin-left: 0px;
+      margin-left: 0;
       margin-right: 0px; }
       .custom-navbar .custom-navbar-cta li:first-child {
         margin-right: 20px; }
@@ -316,10 +316,17 @@ a {
   .we-help-section .imgs-grid {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[27];
+    /*-ms-grid-columns: (1fr)[27];*/
     grid-template-columns: repeat(27, 1fr);
     position: relative; }
-    .we-help-section .imgs-grid:before {
+
+.we-help-section .imgs-grid {
+  -ms-grid-columns: 1fr
+}
+
+
+
+.we-help-section .imgs-grid:before {
       position: absolute;
       content: "";
       width: 255px;

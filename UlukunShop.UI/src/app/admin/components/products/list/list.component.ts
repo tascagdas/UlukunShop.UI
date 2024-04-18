@@ -10,6 +10,7 @@ import {DialogService} from "../../../../services/common/dialog.service";
 import {
   SelectProductImageDialogComponent
 } from "../../../../dialogs/select-product-image-dialog/select-product-image-dialog.component";
+import {QrcodeDialogComponent} from "../../../../dialogs/qrcode-dialog/qrcode-dialog.component";
 
 declare var $: any;
 
@@ -27,7 +28,7 @@ export class ListComponent extends BaseComponent implements OnInit {
     super(_spinner)
   }
 
-  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate','images','edit','delete'];
+  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate','qrcode','images','edit','delete'];
   dataSource: MatTableDataSource<List_Product> = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -66,4 +67,11 @@ export class ListComponent extends BaseComponent implements OnInit {
     await this.getProducts();
   }
 
+  showQRCode(productId) {
+    this.dialogService.openDialog({
+      componentType:QrcodeDialogComponent,
+      data:productId,
+      afterClosed:()=>{}
+    })
+  }
 }
