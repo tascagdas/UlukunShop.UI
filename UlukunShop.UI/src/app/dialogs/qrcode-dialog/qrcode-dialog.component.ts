@@ -6,7 +6,7 @@ import {DialogService} from "../../services/common/dialog.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {CustomToastrService} from "../../services/ui/custom-toastr.service";
 import {OrderDetailDialogState} from "../order-detail-dialog/order-detail-dialog.component";
-import {QrcodeServiceService} from "../../services/common/qrcode-service.service";
+import {QrcodeService} from "../../services/common/qrcode.service";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 import {SpinnerType} from "../../base/base.component";
 
@@ -21,7 +21,7 @@ export class QrcodeDialogComponent  extends BaseDialog<QrcodeDialogComponent> im
     dialogRef: MatDialogRef<QrcodeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data:string,
     private spinner: NgxSpinnerService,
-    private qrCodeService:QrcodeServiceService,
+    private qrCodeService:QrcodeService,
     private domSanitizer: DomSanitizer) {
     super(dialogRef)
   }

@@ -5,7 +5,7 @@ import {firstValueFrom, Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class QrcodeServiceService {
+export class QrcodeService {
 
   constructor(private _httpClientService:HttpClientService) { }
 

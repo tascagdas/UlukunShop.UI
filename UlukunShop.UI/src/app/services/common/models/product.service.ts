@@ -3,7 +3,7 @@ import {HttpClientService} from "../http-client.service";
 import {Create_Product} from "../../../contracts/create_product";
 import {HttpErrorResponse} from "@angular/common/http";
 import {List_Product} from "../../../contracts/List_Product";
-import {firstValueFrom, Observable} from "rxjs";
+import {delay, firstValueFrom, Observable} from "rxjs";
 import {List_Product_Image} from "../../../contracts/list_product_image";
 
 @Injectable({
@@ -88,6 +88,19 @@ export class ProductService {
     });
 
     await firstValueFrom(changeThumbnailObservable);
+    successCallBack();
+  }
+
+  async changeStockWithQRCode(productId:string,stock:number,successCallBack?: () => void) {
+    const observable=this._httpClientService.put({
+      controller: "products",
+      action:"qrcode"
+    },{
+      productId,
+      stock,
+    });
+    await firstValueFrom(observable);
+    delay(500);
     successCallBack();
   }
 }

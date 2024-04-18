@@ -5,6 +5,8 @@ import { AlertifyService } from "../../../services/admin/alertify.service";
 import { HttpClientService } from "../../../services/common/http-client.service";
 import {Create_Product} from "../../../contracts/create_product";
 import {ListComponent} from "./list/list.component";
+import {DialogService} from "../../../services/common/dialog.service";
+import {QrcodeReadingDialogComponent} from "../../../dialogs/qrcode-reading-dialog/qrcode-reading-dialog.component";
 
 @Component ( {
   selector: 'app-products',
@@ -12,7 +14,10 @@ import {ListComponent} from "./list/list.component";
   styleUrls: [ './products.component.scss' ]
 } )
 export class ProductsComponent extends BaseComponent implements OnInit {
-  constructor ( _spinner: NgxSpinnerService, private _alertify: AlertifyService, private _httpClientService: HttpClientService ) {
+  constructor ( _spinner: NgxSpinnerService,
+                private _alertify: AlertifyService,
+                private _httpClientService: HttpClientService,
+                private _dialogService: DialogService ) {
     super ( _spinner )
   }
 
@@ -27,5 +32,13 @@ export class ProductsComponent extends BaseComponent implements OnInit {
     this.ListComponents.getProducts()
   }
 
+  openProductQrCodeReadingDialog() {
+    this._dialogService.openDialog({
+      componentType:QrcodeReadingDialogComponent,
+      data:null,
+      options: {width:"750px"},
+      afterClosed:()=>{}
+    })
+  }
 }
 

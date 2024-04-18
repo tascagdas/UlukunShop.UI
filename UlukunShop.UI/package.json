@@ -28,6 +28,7 @@
     "jquery": "^3.7.1",
     "ng-apexcharts": "^1.7.4",
     "ngx-file-drop": "^13.0.0",
+    "ngx-scanner-qrcode": "^1.6.6",
     "ngx-spinner": "^14.0.0",
     "ngx-toastr": "^14.3.0",
     "rxjs": "~7.5.0",
