@@ -47,7 +47,7 @@
 
   </div>
 
-  <div>
+  <div style="margin-bottom: 125px">
     <div class="pagination justify-content-center">{{ currentPage }}/{{ totalPageCount }}</div>
 
     <nav class="" aria-label="Page navigation example ">
@@ -60,9 +60,7 @@
             {{ pageNo }}
           </a>
         </li>
-        <li class="page-item"><a class="page-link"
-                                 [routerLink]="['/products', currentPage + 1 >= totalPageCount ? totalPageCount : currentPage + 1]">Sonraki
-          Sayfa</a></li>
+        <li class="page-item"><a class="page-link" [routerLink]="['/products', currentPage + 1 >= totalPageCount ? totalPageCount : currentPage + 1]">Sonraki Sayfa</a></li>
       </ul>
     </nav>
   </div>
