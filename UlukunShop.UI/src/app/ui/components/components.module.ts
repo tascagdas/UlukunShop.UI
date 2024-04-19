@@ -10,7 +10,7 @@ import {ContactModule} from "./contact/contact.module";
 import { UiFooterComponent } from './ui-footer/ui-footer.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 import {ThankyouModule} from "./thankyou/thankyou.module";
-import {RouterLinkWithHref} from "@angular/router";
+import {RouterLink} from "@angular/router";
 
 
 
@@ -30,7 +30,7 @@ import {RouterLinkWithHref} from "@angular/router";
         RegisterModule,
         ContactModule,
         ThankyouModule,
-        RouterLinkWithHref
+        RouterLink
     ]
 })
 export class ComponentsModule { }

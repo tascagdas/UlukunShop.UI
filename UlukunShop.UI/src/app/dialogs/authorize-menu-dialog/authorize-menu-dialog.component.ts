@@ -1,11 +1,11 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit} from '@angular/core';
 import {BaseDialog} from "../base/base-dialog";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {RoleService} from "../../services/common/models/role.service";
 import {AuthorizationEndpointService} from "../../services/common/models/authorization-endpoint.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {List_Role} from "../../contracts/role/List_Role";
-import {MatSelectionList} from "@angular/material/list";
+import {MatListOption, MatSelectionList} from "@angular/material/list";
 import {SpinnerType} from "../../base/base.component";
 
 @Component({
@@ -38,7 +38,10 @@ export class AuthorizeMenuDialogComponent extends BaseDialog<AuthorizeMenuDialog
   }
 
   assignRoles(rolesComponent: MatSelectionList) {
-    const roles: string[] = rolesComponent.selectedOptions.selected.map(o => o._text.nativeElement.innerText)
+    const roles: string[] = rolesComponent.selectedOptions.selected.map((o: MatListOption) => {
+      const elementRef: ElementRef<HTMLElement> = o._elementRef;
+      return elementRef.nativeElement.textContent.trim();
+    });
     this.spinner.show(SpinnerType.BallAtom);
     this.authorizationEndpointService.assignRoleEndpoint(roles, this.data.code, this.data.menuName,
       () => {

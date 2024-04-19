@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {Component, ElementRef, Inject, OnInit} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSelectionList } from '@angular/material/list';
+import {MatListOption, MatSelectionList} from '@angular/material/list';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SpinnerType } from '../../base/base.component';
 import { List_Role } from '../../contracts/role/List_Role';
@@ -39,7 +39,10 @@ export class AuthorizeUserDialogComponent extends BaseDialog<AuthorizeUserDialog
   }
 
   assignRoles(rolesComponent: MatSelectionList) {
-    const roles: string[] = rolesComponent.selectedOptions.selected.map(o => o._text.nativeElement.innerText)
+    const roles: string[] = rolesComponent.selectedOptions.selected.map((o: MatListOption) => {
+      const elementRef: ElementRef<HTMLElement> = o._elementRef;
+      return elementRef.nativeElement.textContent.trim();
+    });
     this.spinner.show(SpinnerType.BallAtom);
     this.userService.assignRoleToUser(this.data, roles,
       () => {
