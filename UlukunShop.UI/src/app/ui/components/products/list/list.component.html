@@ -6,8 +6,8 @@
           <img *ngIf="product.productImages.length" src="{{baseUrl.url}}/{{product.imagePath}}" class="card-img-top" alt="Product Image">
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">Description of the product goes here. It can be a short description or some key features
-              of the product.</p>
+            <p *ngIf="!product.properties" class="card-text">Ürün açıklaması henüz eklenmemiştir. Editörlerimiz bunun üzerinde çalışmaktadır. Yakın zamanda eklenecektir</p>
+            <p *ngIf="product.properties" class="card-text">{{product.properties}}</p>
           </div>
           <div class="card-footer">
             <div class="d-flex justify-content-between align-items-center">
@@ -21,25 +21,6 @@
 
 
 
-
-
-
-
-
-
-
-<!--      <div class="card col-md-3 m-3" style="width: 18rem;" *ngFor="let product of products">-->
-<!--        <img *ngIf="!product.productImages.length" src="./assets/urun-resmi-yok.jpg" class="card-img-top" alt="...">-->
-<!--        <img *ngIf="product.productImages.length" src="{{baseUrl.url}}/{{product.imagePath}}" class="card-img-top"-->
-<!--             alt="...">-->
-<!--        <div class="card-body">-->
-<!--          <h3 class="fw-bold card-title">{{ product.name }}</h3>-->
-<!--          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's-->
-<!--            content.</p>-->
-<!--          <p class="card-subtitle"> {{ product.price | currency:'₺' }}</p>-->
-<!--          <a href="#" class="btn btn-primary">Sepete Ekle</a>-->
-<!--        </div>-->
-<!--      </div>-->
 
 
 

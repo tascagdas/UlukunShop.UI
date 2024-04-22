@@ -40,6 +40,7 @@ export class ListComponent extends BaseComponent implements OnInit {
   async ngOnInit() {
     this.baseUrl = await this.fileService.getBaseStorageUrl();
 
+
     this.activatedRoute.params.subscribe(async params => {
 
       this.currentPage = parseInt(params["page"] ?? 1);
@@ -62,7 +63,8 @@ export class ListComponent extends BaseComponent implements OnInit {
           price:p.price,
           stock:p.stock,
           updatedDate:p.updatedDate,
-          productImages:p.productImages
+          productImages:p.productImages,
+          properties:p.properties
         }
         return listProduct;
       });
