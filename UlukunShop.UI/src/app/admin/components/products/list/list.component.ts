@@ -11,6 +11,7 @@ import {
   SelectProductImageDialogComponent
 } from "../../../../dialogs/select-product-image-dialog/select-product-image-dialog.component";
 import {QrcodeDialogComponent} from "../../../../dialogs/qrcode-dialog/qrcode-dialog.component";
+import {ProductEditDialogComponent} from "../../../../dialogs/product-edit-dialog/product-edit-dialog.component";
 
 declare var $: any;
 
@@ -71,6 +72,17 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.dialogService.openDialog({
       componentType:QrcodeDialogComponent,
       data:productId,
+      afterClosed:()=>{}
+    })
+  }
+
+  editProduct(element) {
+    this.dialogService.openDialog({
+      componentType:ProductEditDialogComponent,
+      data:element,
+      options:{
+        width:"1350px"
+      },
       afterClosed:()=>{}
     })
   }
