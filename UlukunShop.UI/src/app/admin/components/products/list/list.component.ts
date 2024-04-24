@@ -81,7 +81,7 @@ export class ListComponent extends BaseComponent implements OnInit {
       componentType:ProductEditDialogComponent,
       data:element,
       options:{
-        width:"1350px"
+        width:"750px"
       },
       afterClosed:()=>{}
     })

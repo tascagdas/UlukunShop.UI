@@ -33,6 +33,15 @@ export class ProductService {
       });
   }
 
+  edit(){
+    // const editObservable= this._httpClientService.put({
+    //   controller: "products",
+    // });
+    //
+    // await firstValueFrom(editObservable);
+    // successCallBack();
+  }
+
   async read(page: number = 0, size: number = 5, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{
     totalProductCount: number,
     products: List_Product[]

@@ -21,8 +21,12 @@ export class DashboardComponent extends BaseComponent implements OnInit {
     this.chartOptions = {
       series: [
         {
-          name: "Desktops",
+          name: "Elfeneri",
           data: [10, 41, 35, 51, 49, 62, 69, 91, 148,,,,]
+        },
+        {
+          name: "Aksesuar",
+          data:[6, 21, 30, 25, 42, 60, 42, 80, 250,,,,]
         }
       ],
       chart: {
