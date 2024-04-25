@@ -5,6 +5,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {List_Product} from "../../../contracts/List_Product";
 import {delay, firstValueFrom, Observable} from "rxjs";
 import {List_Product_Image} from "../../../contracts/list_product_image";
+import {Edit_Product} from "../../../contracts/Edit_Product";
 
 @Injectable({
   providedIn: 'root'
@@ -33,13 +34,12 @@ export class ProductService {
       });
   }
 
-  edit(){
-    // const editObservable= this._httpClientService.put({
-    //   controller: "products",
-    // });
-    //
-    // await firstValueFrom(editObservable);
-    // successCallBack();
+  async edit(editedProduct:Edit_Product, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void) {
+    const editObservable= this._httpClientService.put({
+      controller: "products",
+    },editedProduct);
+    await firstValueFrom(editObservable);
+    successCallBack();
   }
 
   async read(page: number = 0, size: number = 5, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{
