@@ -1,7 +1,12 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {BaseDialog} from "../base/base-dialog";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {List_Product} from "../../contracts/List_Product";
+import {Edit_Product} from "../../contracts/Edit_Product";
+import {Create_Product} from "../../contracts/create_product";
+import {AlertifyService, MessageType, Position} from "../../services/admin/alertify.service";
+import {ProductService} from "../../services/common/models/product.service";
+import {ActivatedRoute, NavigationExtras, Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-edit-dialog',
@@ -12,6 +17,10 @@ export class ProductEditDialogComponent extends BaseDialog<ProductEditDialogComp
 
   constructor(dialogRef: MatDialogRef<ProductEditDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: List_Product,
+              private productService: ProductService,
+              private alertify: AlertifyService,
+              private router: Router,
+              private route: ActivatedRoute
   ) {
     super(dialogRef)
   }
@@ -28,7 +37,42 @@ export class ProductEditDialogComponent extends BaseDialog<ProductEditDialogComp
 
   }
 
+  ngOnDestroy(): void {
+    console.log("komponent kapatildi.")
+  }
+
+  @Output() editedProduct: EventEmitter<Edit_Product> = new EventEmitter();
+
+
   updateProduct(txtName: HTMLInputElement, txtProperties: HTMLInputElement, txtPrice: HTMLInputElement, txtStock: HTMLInputElement) {
-console.log(txtProperties.value)
+
+    const edit_product: Edit_Product = new Edit_Product();
+    edit_product.name = txtName.value;
+    edit_product.stock = parseInt(txtStock.value);
+    edit_product.price = parseFloat(txtPrice.value);
+    edit_product.properties = txtProperties.value;
+    edit_product.id = this.data.id;
+
+
+    this.productService.edit(edit_product, () => {
+
+
+
+      this.alertify.message("Urun basariyla guncellenmistir.", {dismissOthers: true, messageType: MessageType.Success});
+      this.editedProduct.emit(edit_product);
+
+    }, errorMessage => {
+
+
+      this.alertify.message(errorMessage, {
+        dismissOthers: true,
+        messageType: MessageType.Error,
+        position: Position.TopRight
+      });
+
+
+    });
+
+
   }
 }
