@@ -23,13 +23,13 @@ export class CreateComponent extends BaseComponent implements OnInit {
   @Output() createdProduct: EventEmitter<Create_Product> = new EventEmitter();
 
 
-  create(name: HTMLInputElement, price: HTMLInputElement, stock: HTMLInputElement) {
+  create(name: HTMLInputElement, properties: HTMLInputElement, price: HTMLInputElement, stock: HTMLInputElement) {
     this.showSpinner(SpinnerType.BallAtom)
     const create_product: Create_Product = new Create_Product();
     create_product.name = name.value;
     create_product.stock = parseInt(stock.value);
     create_product.price = parseFloat(price.value);
-
+    create_product.properties= properties.value;
 
 
     this.productService.create(create_product, () => {

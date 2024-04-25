@@ -1,0 +1,29 @@
+<div class="m-5 row">
+
+
+
+<mat-form-field appearance="fill" class="product-create-input col-md-12">
+  <mat-label>Name</mat-label>
+  <input matInput type="text" value="{{name}}" #txtName>
+</mat-form-field>
+
+<mat-form-field appearance="fill" class="product-create-input col-md-12">
+  <mat-label>Properties</mat-label>
+  <input matInput type="text" value="{{property}}" #txtProperties>
+</mat-form-field>
+
+<mat-form-field appearance="fill" class="product-create-input col-md-12">
+  <mat-label>Stock</mat-label>
+  <input matInput type="number" min="0" value="{{stock}}" #txtStock>
+</mat-form-field>
+
+<mat-form-field appearance="fill" class="product-create-input col-md-12">
+  <mat-label>Price</mat-label>
+  <input matInput type="number" min="0" value="{{price}}" #txtPrice>
+</mat-form-field>
+
+
+
+<button mat-raised-button color="accent" class="product-create-button" [matDialogClose]="" (click)="updateProduct(txtName,txtProperties,txtPrice,txtStock)">Degisiklikleri Kaydet</button>
+
+</div>

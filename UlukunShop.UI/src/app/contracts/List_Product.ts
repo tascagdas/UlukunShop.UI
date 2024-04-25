@@ -9,4 +9,5 @@ export class List_Product {
   updatedDate: Date;
   productImages?: List_Product_Image[];
   imagePath: string;
+  properties?:string
 }

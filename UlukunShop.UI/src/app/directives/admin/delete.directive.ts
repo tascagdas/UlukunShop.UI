@@ -23,7 +23,7 @@ export class DeleteDirective {
               private _alertify: AlertifyService,
               private dialogService: DialogService) {
     const img = _renderer.createElement("img");
-    img.setAttribute("src", "../../../../../assets/delete_icon_2.png");
+    img.setAttribute("src", "./assets/delete_icon_2.png");
     img.setAttribute("style", "cursor: pointer;");
     img.width = 30;
     _renderer.appendChild(el.nativeElement, img);

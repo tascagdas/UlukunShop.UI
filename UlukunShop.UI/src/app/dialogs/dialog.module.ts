@@ -22,6 +22,7 @@ import { QrcodeDialogComponent } from './qrcode-dialog/qrcode-dialog.component';
 import { QrcodeReadingDialogComponent } from './qrcode-reading-dialog/qrcode-reading-dialog.component';
 import {MatInputModule} from "@angular/material/input";
 import {NgxScannerQrcodeModule} from "ngx-scanner-qrcode";
+import { ProductEditDialogComponent } from './product-edit-dialog/product-edit-dialog.component';
 
 
 
@@ -36,7 +37,8 @@ import {NgxScannerQrcodeModule} from "ngx-scanner-qrcode";
     AuthorizeMenuDialogComponent,
     AuthorizeUserDialogComponent,
     QrcodeDialogComponent,
-    QrcodeReadingDialogComponent
+    QrcodeReadingDialogComponent,
+    ProductEditDialogComponent
   ],
     imports: [
         CommonModule,
